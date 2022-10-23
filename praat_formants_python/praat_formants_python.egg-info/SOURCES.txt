@@ -1,0 +1,12 @@
+AUTHORS.rst
+LICENSE
+LICENSE.md
+setup.cfg
+setup.py
+praat_formants_python/__init__.py
+praat_formants_python/_formants.py
+praat_formants_python.egg-info/PKG-INFO
+praat_formants_python.egg-info/SOURCES.txt
+praat_formants_python.egg-info/dependency_links.txt
+praat_formants_python.egg-info/not-zip-safe
+praat_formants_python.egg-info/top_level.txt
