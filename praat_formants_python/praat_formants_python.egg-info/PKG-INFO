@@ -7,7 +7,6 @@ Author: Maarten Versteegh
 Author-email: maartenversteegh@gmail.com
 License: BSD
 Keywords: praat_formants_python
-Platform: UNKNOWN
 Classifier: Development Status :: 2 - Pre-Alpha
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: GPLv3 License
@@ -60,4 +59,3 @@ History
 ---------------------
 
 * First release on PyPI.
-

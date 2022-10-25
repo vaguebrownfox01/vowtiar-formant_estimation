@@ -1,2 +1,3 @@
 exports/*
 audio_exports/*
+.vscode/settings.json
