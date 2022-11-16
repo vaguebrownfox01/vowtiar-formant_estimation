@@ -1,0 +1,21 @@
+name: pytorch
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - black
+  - pytorch
+  - cudatoolkit=10.2
+  - torchvision
+  - torchaudio
+  - scipy
+  - pandas
+  - ipykernel
+  - matplotlib
+  - librosa
+  - tqdm
+  - scikit-learn
+  - scikit-audiolab
+  - boto3
+  - scikits.talkbox
+prefix: /home/jeevan/dev/anaconda3/envs/pytorch
