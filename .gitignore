@@ -1,3 +1,5 @@
 exports/*
 audio_exports/*
 .vscode/settings.json
+ThinkDSP/**
+matlab/exports/*.mat
