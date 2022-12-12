@@ -27,22 +27,23 @@ for n = 567:567
     x = resample(x, num, den);
     
     Fs = 8000;
-    NFFT = 2^nextpow2(length(x));
+%     NFFT = 2^nextpow2(length(x));
+    NFFT = 256;
     f = Fs/2*linspace(0,1,NFFT/2+1);
     figure;
-    for r_range=1.02:0.02:1.10
+    for r_range=0.8:0.02:1.10
         CZT = czt(x,NFFT,exp(-2j*pi/NFFT),r_range);
         
-        y_ifft = ifft(CZT);
-        A = lpc(y_ifft, 8);
-        rts = roots(A);
-%         rts = rts(imag(rts)>=0);
-%         rts = rts(1:4);
-        [~, indices] = sort(imag(rts),"descend");
-        rts = rts(indices(1:4));
-        angz = atan2(imag(rts),real(rts));
-        [frqs,indices] = sort(angz.*(Fs/(2*pi)));
-        bw = -1/2*(Fs/(2*pi))*log(abs(rts(indices)));
+%         y_ifft = ifft(CZT);
+%         A = lpc(y_ifft, 8);
+%         rts = roots(A);
+% %         rts = rts(imag(rts)>=0);
+% %         rts = rts(1:4);
+%         [~, indices] = sort(imag(rts),"descend");
+%         rts = rts(indices(1:4));
+%         angz = atan2(imag(rts),real(rts));
+%         [frqs,indices] = sort(angz.*(Fs/(2*pi)));
+%         bw = -1/2*(Fs/(2*pi))*log(abs(rts(indices)));
         
 %         nn = 1;
 %         formants = [];
@@ -53,15 +54,15 @@ for n = 567:567
 %             end
 %         end
 %         formants(2:end)
-        r_range, frqs
+%         r_range, frqs
 
 %         plot(f,2*abs(CZT(1:NFFT/2+1)), 'DisplayName', num2str(r_range))
 %         legend(num2str(r_range));
 %         hold on;
-        inp_i = 1:NFFT/2 + 1;
+        inp_i = 1:NFFT;
         x_val = r_range * cos(2*pi*inp_i/NFFT);
         y_val = - r_range * sin(2*pi*inp_i/NFFT);
-        z_val = abs(CZT);
+        z_val = log10(abs(CZT));
 
         [X,Y] = meshgrid(x_val, y_val);
 
@@ -74,9 +75,10 @@ for n = 567:567
 
 
        
-        mesh(X,Y,Z)
+        mesh(X,Y,Z);
 %         plot3(x_val, y_val, z_val, 'DisplayName',num2str(r_range));
-        
+        xlim([-1 1.5]);
+        ylim([-1 1.5]);
 
         hold on;
         
@@ -90,9 +92,9 @@ for n = 567:567
 %         stem3(real(rts), imag(rts), max(z_val)*ones(length(rts)));
 
         grid
-
-        index(n) = i;
-        formants_pred(n, :) = frqs(2:end);
+% 
+%         index(n) = i;
+%         formants_pred(n, :) = frqs(2:end);
 %         formants_truth(n, :) = base_formants;
 %     
 %         error = (base_formants - frqs(2:end))';
